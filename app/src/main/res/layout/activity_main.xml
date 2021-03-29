@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"     android:layout_height="match_parent"
+    android:orientation="vertical"     tools:context=".MainActivity">
+    <TextView
+        android:layout_width="match_parent"  android:layout_height="wrap_content"
+        android:text="Ort laut ipinfo:"
+        />
+    <TextView
+        android:id="@+id/location" android:layout_width="match_parent"
+        android:layout_height="wrap_content" style="@style/result" />
+    <TextView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Wetterstationen in der Nähe:"
+        />
+    <TextView
+        android:id="@+id/nearestLocation" android:layout_width="match_parent"
+        android:layout_height="wrap_content" style="@style/result"/>
+    <TextView
+        android:layout_marginTop="10dp" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Wetter an der nächsten Station:" />
+    <TextView
+        android:id="@+id/weather" android:layout_width="match_parent"
+        android:layout_height="wrap_content" style="@style/result"/>
+</LinearLayout>
