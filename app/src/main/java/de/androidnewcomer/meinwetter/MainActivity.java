@@ -3,6 +3,7 @@ package de.androidnewcomer.meinwetter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -29,11 +30,20 @@ public class MainActivity extends Activity {
         locationTextView = findViewById(R.id.location);
         stationsTextView = findViewById(R.id.nearestLocation);
         weatherTextView = findViewById(R.id.weather);
+
+        findViewById(R.id.frog).setOnClickListener(v->{
+            v.startAnimation(AnimationUtils.loadAnimation(this,R.anim.bounce));
+            getWeatherInfos();});
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        getWeatherInfos();
+    }
+
+    private void getWeatherInfos() {
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("https://ipinfo.io")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -56,10 +66,6 @@ public class MainActivity extends Activity {
                 locationTextView.setText("Fehler: " + t.getLocalizedMessage());
             }
         });
-
-
-
-
     }
 
     private void findStationsNear(String lattlong) {
@@ -74,13 +80,18 @@ public class MainActivity extends Activity {
             @Override
             public void onResponse(Call<List<LocationResult>> call, Response<List<LocationResult>> response) {
                 String stationen ="";
+                int count=0;
                 for(LocationResult lr : response.body()) {
                     stationen+= lr.title + " (where on earth id: " + lr.woeid + ")\r\n";
-                    break;
+                    if(count++>=4) break;
                 }
                 stationsTextView.setText(stationen);
 
-                findWeatherAt(response.body().get(0).woeid);
+                if(response.body().size()==0) {
+                    stationsTextView.setText("Keine Wetterstationen in der Nähe gefunden");
+                } else {
+                    findWeatherAt(response.body().get(0).woeid);
+                }
 
             }
 

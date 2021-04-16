@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"     android:layout_height="match_parent"
-    android:orientation="vertical"     tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/heaven"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/frog"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ort laut ipinfo:" />
+
+            <TextView
+                android:id="@+id/location"
+                style="@style/result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Die 5 nächsten Wetterstationen:" />
+
+            <TextView
+                android:id="@+id/nearestLocation"
+                style="@style/result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wetter an der nächsten Station:" />
+
+            <TextView
+                android:id="@+id/weather"
+                style="@style/result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
     <TextView
-        android:layout_width="match_parent"  android:layout_height="wrap_content"
-        android:text="Ort laut ipinfo:"
-        />
-    <TextView
-        android:id="@+id/location" android:layout_width="match_parent"
-        android:layout_height="wrap_content" style="@style/result" />
-    <TextView
-        android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="Wetterstationen in der Nähe:"
-        />
-    <TextView
-        android:id="@+id/nearestLocation" android:layout_width="match_parent"
-        android:layout_height="wrap_content" style="@style/result"/>
-    <TextView
-        android:layout_marginTop="10dp" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:text="Wetter an der nächsten Station:" />
-    <TextView
-        android:id="@+id/weather" android:layout_width="match_parent"
-        android:layout_height="wrap_content" style="@style/result"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="Verwendeter Wetterdienst: metaweather.com"
+        android:textSize="12sp" android:textColor="#000000"/>
 </LinearLayout>
